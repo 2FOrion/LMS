@@ -1,0 +1,5 @@
+body{background:#f5f6f8}
+.navbar{background:#111827}
+.navbar .navbar-brand,.navbar .nav-link{color:#fff}
+.container-main{max-width:1100px;padding:24px}
+.card{border-radius:16px}

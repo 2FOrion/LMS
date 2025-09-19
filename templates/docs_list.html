@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Meus documentos{% endblock %}
+{% block content %}
+<h3>Meus documentos para assinatura</h3>
+<table class="table">
+  <thead><tr><th>ID</th><th>Template</th><th>Status</th><th>Ações</th></tr></thead>
+  <tbody>
+    {% for e in envelopes %}
+    <tr>
+      <td>{{ e.id }}</td>
+      <td>{{ e.template.name }}</td>
+      <td>{{ e.status }}</td>
+      <td>
+        <form method="post" action="{{ url_for('docs_request_code', env_id=e.id) }}" class="d-inline">
+          <button class="btn btn-sm btn-outline-primary">Enviar código</button>
+        </form>
+        <a class="btn btn-sm btn-primary" href="{{ url_for('docs_view', env_id=e.id) }}">Assinar</a>
+      </td>
+    </tr>
+    {% else %}
+    <tr><td colspan="4">Nenhum documento no momento.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}Contratações{% endblock %}
+{% block content %}
+<h3>Pipeline de contratação</h3>
+<table class="table table-striped"><thead><tr><th>Candidato</th><th>CPF</th><th>Etapa</th><th>Atualizar</th></tr></thead><tbody>
+{% for p in pipes %}
+<tr>
+  <td>{{ p.user.name }}</td>
+  <td>{{ p.user.cpf }}</td>
+  <td><span class="badge bg-info">{{ p.stage.value }}</span></td>
+  <td>
+    <form method="post" action="{{ url_for('admin_hiring_set_stage', pipe_id=p.id) }}" class="d-flex gap-2">
+      <select class="form-select" name="stage" required>
+        {% for st in stages %}<option value="{{ st }}">{{ st }}</option>{% endfor %}
+      </select>
+      <button class="btn btn-primary btn-sm">Salvar</button>
+    </form>
+  </td>
+</tr>
+{% else %}<tr><td colspan="4">Nenhum pipeline ainda.</td></tr>{% endfor %}
+</tbody></table>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Assinar documento{% endblock %}
+{% block content %}
+<h3>Assinar: {{ env.template.name }}</h3>
+<p>Preencha o código enviado ao seu e-mail.</p>
+<form method="post" action="{{ url_for('docs_sign', env_id=env.id) }}">
+  <div class="row g-2">
+    <div class="col-md-3"><input class="form-control" name="code" placeholder="Código" required></div>
+    <div class="col-md-3"><button class="btn btn-success">Assinar</button></div>
+  </div>
+</form>
+{% endblock %}

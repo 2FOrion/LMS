@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Minha contratação{% endblock %}
+{% block content %}
+<h3>Minha contratação</h3>
+<p>Etapa atual: <b>{{ pipe.stage.value }}</b></p>
+<ol>
+  <li class="{{ 'fw-bold' if pipe.stage.value == 'Cadastro' }}">Cadastro</li>
+  <li class="{{ 'fw-bold' if pipe.stage.value == 'Documentos' }}">Envio de documentos</li>
+  <li class="{{ 'fw-bold' if pipe.stage.value == 'Treinamentos NR' }}">Treinamentos NR</li>
+  <li class="{{ 'fw-bold' if pipe.stage.value == 'Contrato' }}">Assinatura de contrato</li>
+  <li class="{{ 'fw-bold' if pipe.stage.value == 'Integração' }}">Integração</li>
+</ol>
+{% endblock %}

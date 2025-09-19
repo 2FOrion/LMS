@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Cadastrar · SIGHH-LMS{% endblock %}
+{% block content %}
+<h3>Criar conta</h3>
+<form method="post" class="mt-3" autocomplete="off">
+  <div class="mb-3"><label class="form-label">Nome</label><input class="form-control" name="name" required></div>
+  <div class="mb-3"><label class="form-label">E-mail</label><input class="form-control" name="email" type="email" required></div>
+  <div class="mb-3"><label class="form-label">CPF</label><input class="form-control" name="cpf" placeholder="000.000.000-00"></div>
+  <div class="mb-3"><label class="form-label">Senha</label><input class="form-control" name="password" type="password" required></div>
+  <button class="btn btn-primary">Criar</button>
+</form>
+{% endblock %}

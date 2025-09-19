@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<h3>Meus cursos</h3>
+<div class="row g-3">
+  {% for c in courses %}
+  <div class="col-md-4">
+    <div class="card p-3">
+      <h5>{{ c.title }}</h5>
+      <a class="btn btn-outline-primary" href="{{ url_for('course_detail', course_id=c.id) }}">Acessar</a>
+    </div>
+  </div>
+  {% else %}
+  <p>Você ainda não está inscrito em nenhum curso.</p>
+  {% endfor %}
+</div>
+<hr>
+<h3 class="mt-4">Minhas provas</h3>
+<ul>
+  {% for s in subs %}
+    <li>{{ s.course_id }} — {{ s.score_pct }}% — {{ s.submitted_at.strftime('%d/%m/%Y %H:%M') }}</li>
+  {% else %}
+    <li>Nenhuma prova ainda.</li>
+  {% endfor %}
+</ul>
+{% endblock %}

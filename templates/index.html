@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}Início · SIGHH-LMS{% endblock %}
+{% block content %}
+<h3 class="mb-3">Cursos em destaque</h3>
+{% if current_user.is_authenticated and my_progress %}
+<div class="card p-3 mb-3">
+  <h6>Meu andamento</h6>
+  <ul class="mb-0">
+    {% for cid, pct in my_progress %}
+      <li>Curso #{{ cid }} — {{ pct|round(0) }}%</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endif %}
+<div class="row g-3">
+  {% for c in courses %}
+  <div class="col-md-4">
+    <div class="card p-3">
+      <h5>{{ c.title }}</h5>
+      <p class="text-muted">{{ c.summary[:120] }}...</p>
+      <a class="btn btn-primary" href="{{ url_for('course_detail', course_id=c.id) }}">Ver curso</a>
+    </div>
+  </div>
+  {% else %}
+    <p>Nenhum curso ainda.</p>
+  {% endfor %}
+</div>
+{% endblock %}

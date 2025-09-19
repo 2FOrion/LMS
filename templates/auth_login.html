@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}Entrar · SIGHH-LMS{% endblock %}
+{% block content %}
+<h3>Entrar</h3>
+<form method="post" class="mt-3" autocomplete="off">
+  <div class="mb-3"><label class="form-label">E-mail</label><input class="form-control" name="email" type="email" required></div>
+  <div class="mb-3"><label class="form-label">Senha</label><input class="form-control" name="password" type="password" required></div>
+  <button class="btn btn-primary">Entrar</button>
+</form>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}Curso · {{ c.title }}{% endblock %}
+{% block content %}
+<h3>{{ c.title }}</h3>
+<p class="text-muted">{{ c.summary }}</p>
+
+{% if enrolled %}
+  <a class="btn btn-primary" href="{{ url_for('course_quiz', course_id=c.id) }}">Fazer prova</a>
+  <div class="mt-4 p-3 border rounded">
+    <h6>Certificado</h6>
+    <form method="post" action="{{ url_for('request_signature', course_id=c.id) }}" class="d-inline">
+      <button class="btn btn-outline-primary">Solicitar código por e-mail</button>
+    </form>
+    <form method="post" action="{{ url_for('sign_certificate', course_id=c.id) }}" class="d-inline ms-2">
+      <input name="code" class="form-control d-inline" style="width:140px" placeholder="código" required>
+      <button class="btn btn-success ms-1">Assinar & Emitir PDF</button>
+    </form>
+    {% if current_user.is_authenticated %}
+      <a class="btn btn-link" href="{{ url_for('dashboard') }}">Ver minhas provas</a>
+    {% endif %}
+  </div>
+{% else %}
+  <form method="post" action="{{ url_for('enroll', course_id=c.id) }}">
+    <button class="btn btn-primary">Inscrever-se</button>
+  </form>
+{% endif %}
+{% endblock %}

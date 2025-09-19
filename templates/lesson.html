@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block title %}Aula · SIGHH-LMS{% endblock %}
+{% block content %}
+<h3>{{ l.title }}</h3>
+{% if l.video_url %}<div class="ratio ratio-16x9 mb-3"><iframe src="{{ l.video_url }}" allowfullscreen></iframe></div>{% endif %}
+{% if l.attachment_url %}<p><a class="btn btn-outline-secondary" href="{{ l.attachment_url }}" target="_blank">Abrir material</a></p>{% endif %}
+<pre style="white-space:pre-wrap">{{ l.content_md }}</pre>
+{% endblock %}
